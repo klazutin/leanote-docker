@@ -6,8 +6,16 @@ This Dockerfile runs Leanote only, MongoDB should be already running or launched
 
 ## Usage
 
-To run, adjust the attached app.conf file and be sure to set a reachable MongoDB instance.  
-Start the container as follows:
+The easiest way to set this up is to clone this Github repository and build it locally. This way you already have your config file and shared directories set up for you:
+```
+git clone https://github.com/klazutin/leanote-docker
+cd leanote-docker
+```
+Next, change the included `app.conf` file to match your MongoDB configuration. Now you can run the build:
+```
+docker build -t leanote:latest .
+```
+Finally, start the container as follows:
 ```
 docker run -p 9000:9000 -v `pwd`/files/:/leanote/files -v `pwd`/public/upload/:/leanote/public/upload leanote:latest
 ```
